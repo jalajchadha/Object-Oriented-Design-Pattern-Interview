@@ -1,23 +1,22 @@
 {
   "scout-routing": {
-    "enabled": true,
     "PreToolUse": [
       {
-        "matcher": "grep_search|find_by_name",
+        "matcher": "call_mcp_tool",
         "hooks": [
           {
+            "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File F:\\Study\\Repos\\Homelab\\scripts\\scout-agy-hook.ps1 -Event PreToolUse",
             "type": "command",
-            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File F:\\Study\\Repos\\Homelab\\scripts\\scout-agy-hook.ps1 -Event PreToolUse",
-            "timeout": 5
+            "timeout": 45
           }
         ]
       }
     ],
     "PreInvocation": [
       {
+        "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File F:\\Study\\Repos\\Homelab\\scripts\\scout-agy-hook.ps1 -Event PreInvocation",
         "type": "command",
-        "command": "powershell -NoProfile -ExecutionPolicy Bypass -File F:\\Study\\Repos\\Homelab\\scripts\\scout-agy-hook.ps1 -Event PreInvocation",
-        "timeout": 5
+        "timeout": 45
       }
     ]
   }
