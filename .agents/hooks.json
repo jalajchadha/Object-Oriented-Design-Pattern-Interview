@@ -2,21 +2,40 @@
   "scout-routing": {
     "PreToolUse": [
       {
-        "matcher": "call_mcp_tool",
+        "matcher": "run_command|call_mcp_tool",
         "hooks": [
           {
-            "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File F:\\Study\\Repos\\Homelab\\scripts\\scout-agy-hook.ps1 -Event PreToolUse",
             "type": "command",
-            "timeout": 45
+            "command": "python F:\\Study\\Repos\\Homelab\\scripts\\scout-agy-hook.py -Event PreToolUse",
+            "timeout": 30
           }
         ]
       }
     ],
+    "PostToolUse": [
+      {
+        "matcher": "write_file|edit_file",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python F:\\Study\\Repos\\Homelab\\scripts\\scout-agy-hook.py -Event PostToolUse",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "type": "command",
+        "command": "python F:\\Study\\Repos\\Homelab\\scripts\\scout-agy-hook.py -Event Stop",
+        "timeout": 30
+      }
+    ],
     "PreInvocation": [
       {
-        "command": "pwsh -NoProfile -ExecutionPolicy Bypass -File F:\\Study\\Repos\\Homelab\\scripts\\scout-agy-hook.ps1 -Event PreInvocation",
         "type": "command",
-        "timeout": 45
+        "command": "python F:\\Study\\Repos\\Homelab\\scripts\\scout-agy-hook.py -Event PreInvocation",
+        "timeout": 30
       }
     ]
   }
