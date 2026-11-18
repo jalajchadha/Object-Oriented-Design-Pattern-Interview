@@ -1,0 +1,11 @@
+version: 1
+service: Object-Oriented-Design-Pattern-Interview
+description: "Homelab repository Object-Oriented-Design-Pattern-Interview connected to the Autonomous Factory"
+
+
+
+
+circuit_breakers:
+  max_turns: 15
+  max_retry_cycles: 3
+  budget_cap_usd: 2.00
